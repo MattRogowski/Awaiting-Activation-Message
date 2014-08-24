@@ -17,10 +17,18 @@
  * limitations under the License.
 **/
 
-$l['aamessagetitle'] = "Your account is currently awaiting activation.";
-$l['aamessage'] = "{1}, your account is currently awaiting activation. Until you activate your account, you may not be able to post on these forums. Please contact an administrator if you have problems activating your account.";
-$l['aamessageadmintitle'] = "Your account is currently awaiting admin activation.";
-$l['aamessageadmin'] = "{1}, your account is currently awaiting admin activation. Until an administrator activates your account, you may not be able to post on these forums.";
-$l['aamessageemailtitle'] = "Your account is currently awaiting email activation.";
-$l['aamessageemail'] = "{1}, your account is currently awaiting email activation. Please check the inbox of the email address you supplied upon registration for details on how to activate your account. If it does not arrive within 10 minutes, check your spam/trash folder. If it does not arrive within 30 minutes, resend it by clicking <a href=\"{2}/member.php?action=resendactivation\">here</a>. Until you activate your account, you may not be able to post on these forums.";
+$l['aamessage_title_admin'] = "Your account is currently awaiting admin activation.";
+$l['aamessage_message_admin'] = "{1}, your account is currently awaiting admin activation.";
+
+$l['aamessage_title_verify'] = "Your account is currently awaiting email activation.";
+$l['aamessage_message_verify'] = "{1}, your account is currently awaiting email activation. Please check the inbox of the email address you supplied upon registration for details on how to activate your account. If it does not arrive within 10 minutes, check your spam/trash folder. If it does not arrive within 30 minutes, resend it by clicking <a href=\"{2}/member.php?action=resendactivation\">here</a>.";
+
+$l['aamessage_title_both'] = "Your account is currently awaiting email and admin activation.";
+$l['aamessage_message_both'] = "Your account will also need to be activated by an administrator.";
+
+$l['aamessage_title_default'] = "Your account is currently awaiting activation.";
+$l['aamessage_message_default'] = "{1}, your account is currently awaiting activation.";
+
+$l['aamessage_end_posting'] = 'Until your account is activated, you may not be able to post on these forums.';
+$l['aamessage_end_contacting'] = 'Please contact an administrator if you have problems activating your account.';
 ?>

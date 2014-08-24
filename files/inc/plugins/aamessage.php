@@ -52,12 +52,12 @@ function aamessage_activate()
 		"template" => "<table width=\"100%\" border=\"0\" cellspacing=\"0\" cellpadding=\"5\" class=\"tborder\">
 	<tr>
 		<td class=\"thead\">
-			<strong>{\$aamessagetitle}</strong>
+			<strong>{\$aamessage_title}</strong>
 		</td>
 	</tr>
 	<tr>
 		<td class=\"trow1\">
-			{\$aamessage}
+			{\$aamessage_message}
 		</td>
 	</tr>
 </table>
@@ -101,24 +101,27 @@ function aamessage()
 	
 	if($mybb->user['usergroup'] == 5)
 	{
-		// if an admin has to activate them
-		if($mybb->settings['regtype'] == "admin")
+		switch($mybb->settings['regtype'])
 		{
-			$aamessagetitle = $lang->aamessageadmintitle;
-			$aamessage = $lang->sprintf($lang->aamessageadmin, $mybb->user['username']);
+			case 'admin': // if an admin has to activate them
+				$aamessage_title = $lang->aamessage_title_admin;
+				$aamessage_message = $lang->sprintf($lang->aamessage_message_admin, $mybb->user['username']);
+				break;
+			case 'verify': // if they have to verify via email
+				$aamessage_title = $lang->aamessage_title_verify;
+				$aamessage_message = $lang->sprintf($lang->aamessage_message_verify, $mybb->user['username'], $mybb->settings['bburl']);
+				break;
+			case 'both': // both are required
+				$aamessage_title = $lang->aamessage_title_both;
+				$aamessage_message = $lang->sprintf($lang->aamessage_message_verify, $mybb->user['username'], $mybb->settings['bburl']).'<br /><br />'.$lang->aamessage_message_both;
+				break;
+			default: // if the setting has been changed to either instant or random password, show a generic message
+				$aamessage_title = $lang->aamessage_title_default;
+				$aamessage_message = $lang->sprintf($lang->aamessage_message_default, $mybb->user['username']);
+				break;
 		}
-		// if they have to verify via email
-		elseif($mybb->settings['regtype'] == "verify")
-		{
-			$aamessagetitle = $lang->aamessageemailtitle;
-			$aamessage = $lang->sprintf($lang->aamessageemail, $mybb->user['username'], $mybb->settings['bburl']);
-		}
-		// is the setting has been changed to either instant or random password, show a generic message
-		else
-		{
-			$aamessagetitle = $lang->aamessagetitle;
-			$aamessage = $lang->sprintf($lang->aamessage, $mybb->user['username']);
-		}
+		$aamessage_message .= '<br /><br />'.$lang->aamessage_end_posting.'<br /><br />'.$lang->aamessage_end_contacting;
+
 		eval("\$aamessage = \"".$templates->get('aamessage')."\";");
 	}
 }

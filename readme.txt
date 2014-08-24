@@ -25,7 +25,7 @@ Change Log:
 08/05/09 - v1.1 -> v1.1.1 -> Minor changes to files, upload new version, overwrite old, no need to deactivate.
 10/05/09 - v1.1.1 -> v1.2 -> Message is now at the the top of all pages, no longer collapsible. Deactivate, reupload ./inc/plugins/aamessage.php, activate.
 01/09/10 - v1.2 -> v1.6 -> Uses language file. 1.6 compatible only.
-24/08/14 - v1.6 -> v.1.8 -> MyBB 1.8 compatible. To upgrade, deactivate, reupload ./inc/plugins/aamessage.php, activate.
+24/08/14 - v1.6 -> v.1.8 -> MyBB 1.8 compatible. Supports new account activation method of 'email and admin'. To upgrade, deactivate, reupload ./inc/plugins/aamessage.php and ./inc/languages/english/aamessage.lang.php, activate.
 
 Copyright 2014 Matthew Rogowski
 
