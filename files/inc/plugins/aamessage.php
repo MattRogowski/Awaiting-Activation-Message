@@ -1,6 +1,6 @@
 <?php
 /**
- * Awaiting Activation Message 1.6
+ * Awaiting Activation Message 1.8
 
  * Copyright 2010 Matthew Rogowski
 
@@ -32,8 +32,8 @@ function aamessage_info()
 		"website" => "http://mattrogowski.co.uk",
 		"author" => "MattRogowski",
 		"authorsite" => "http://mattrogowski.co.uk",
-		"version" => "1.6",
-		"compatibility" => "16*",
+		"version" => "1.8",
+		"compatibility" => "18*",
 		"guid" => "c84be61309ce0796500b90283cdf58dc"
 	);
 }
@@ -49,7 +49,7 @@ function aamessage_activate()
 	$templates = array();
 	$templates[] = array(
 		"title" => "aamessage",
-		"template" => "<table width=\"100%\" border=\"0\" cellspacing=\"1\" cellpadding=\"4\" class=\"tborder\">
+		"template" => "<table width=\"100%\" border=\"0\" cellspacing=\"0\" cellpadding=\"5\" class=\"tborder\">
 	<tr>
 		<td class=\"thead\">
 			<strong>{\$aamessagetitle}</strong>

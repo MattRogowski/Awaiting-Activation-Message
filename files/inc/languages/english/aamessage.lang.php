@@ -1,6 +1,6 @@
 <?php
 /**
- * Awaiting Activation Message 1.6 - Language File
+ * Awaiting Activation Message 1.8 - Language File
 
  * Copyright 2010 Matthew Rogowski
 

@@ -1,10 +1,10 @@
 Name: Awaiting Activation Message
 Description: Shows a message to people awaiting activation by email or admin.
-Website: http://mattrogowski.co.uk
-Author: MattRogowski
+Website: https://github.com/MattRogowski/Awaiting-Activation-Message
+Author: Matt Rogowski
 Authorsite: http://mattrogowski.co.uk
-Version: 1.6
-Compatibility: 1.6.x
+Version: 1.8
+Compatibility: 1.8.x
 Files: 2
 Templates added: 1
 Template changes: 1
@@ -25,8 +25,9 @@ Change Log:
 08/05/09 - v1.1 -> v1.1.1 -> Minor changes to files, upload new version, overwrite old, no need to deactivate.
 10/05/09 - v1.1.1 -> v1.2 -> Message is now at the the top of all pages, no longer collapsible. Deactivate, reupload ./inc/plugins/aamessage.php, activate.
 01/09/10 - v1.2 -> v1.6 -> Uses language file. 1.6 compatible only.
+24/08/14 - v1.6 -> v.1.8 -> MyBB 1.8 compatible. To upgrade, deactivate, reupload ./inc/plugins/aamessage.php, activate.
 
-Copyright 2010 Matthew Rogowski
+Copyright 2014 Matthew Rogowski
 
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
