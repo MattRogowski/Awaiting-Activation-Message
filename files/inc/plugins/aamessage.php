@@ -22,7 +22,8 @@ if(!defined("IN_MYBB"))
 	die("Direct initialization of this file is not allowed.<br /><br />Please make sure IN_MYBB is defined.");
 }
 
-$plugins->add_hook("global_start", "aamessage");
+$plugins->add_hook("global_start", "aamessage_global_intermediate");
+$plugins->add_hook("global_intermediate", "aamessage_global_intermediate");
 
 function aamessage_info()
 {
@@ -49,7 +50,7 @@ function aamessage_activate()
 	$templates = array();
 	$templates[] = array(
 		"title" => "aamessage",
-		"template" => "<table width=\"100%\" border=\"0\" cellspacing=\"0\" cellpadding=\"5\" class=\"tborder\">
+		"template" => "<table width=\"100%\" border=\"0\" cellspacing=\"{\$theme['borderwidth']}\" cellpadding=\"{\$theme['tablespace']}\" class=\"tborder\">
 	<tr>
 		<td class=\"thead\">
 			<strong>{\$aamessage_title}</strong>
@@ -66,10 +67,10 @@ function aamessage_activate()
 	foreach($templates as $template)
 	{
 		$insert = array(
-			"title" => $template['title'],
-			"template" => $template['template'],
+			"title" => $db->escape_string($template['title']),
+			"template" => $db->escape_string($template['template']),
 			"sid" => "-1",
-			"version" => "1600",
+			"version" => "1800",
 			"dateline" => TIME_NOW
 		);
 		$db->insert_query("templates", $insert);
@@ -93,9 +94,9 @@ function aamessage_deactivate()
 	find_replace_templatesets("header", "#".preg_quote('{$aamessage}')."#i", '', 0);
 }
 
-function aamessage()
+function aamessage_global_intermediate()
 {
-	global $mybb, $lang, $templates, $aamessage;
+	global $mybb, $lang, $templates, $theme, $aamessage;
 	
 	$lang->load("aamessage");
 	
@@ -121,6 +122,12 @@ function aamessage()
 				break;
 		}
 		$aamessage_message .= '<br /><br />'.$lang->aamessage_end_posting.'<br /><br />'.$lang->aamessage_end_contacting;
+
+		if(substr($mybb->version, 0, 3) == '1.6')
+		{
+			// 1.6 compatibility - $theme not available in global_start, spoof default table settings
+			$theme = array('borderwidth' => 1, 'tablespace' => 4);
+		}
 
 		eval("\$aamessage = \"".$templates->get('aamessage')."\";");
 	}
