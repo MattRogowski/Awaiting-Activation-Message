@@ -1,8 +1,8 @@
 <?php
 /**
- * Awaiting Activation Message 1.8 - Language File
+ * Awaiting Activation Message 1.8.0 - Language File
 
- * Copyright 2014 Matthew Rogowski
+ * Copyright 2016 Matthew Rogowski
 
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.

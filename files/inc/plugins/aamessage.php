@@ -1,8 +1,8 @@
 <?php
 /**
- * Awaiting Activation Message 1.8
+ * Awaiting Activation Message 1.8.0
 
- * Copyright 2014 Matthew Rogowski
+ * Copyright 2016 Matthew Rogowski
 
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -32,10 +32,10 @@ function aamessage_info()
 		"description" => "Shows a message to people awaiting activation by email or admin.",
 		"website" => "https://github.com/MattRogowski/Awaiting-Activation-Message",
 		"author" => "Matt Rogowski",
-		"authorsite" => "http://mattrogowski.co.uk",
-		"version" => "1.8",
+		"authorsite" => "https://matt.rogow.ski",
+		"version" => "1.8.0",
 		"compatibility" => "16*,18*",
-		"guid" => "c84be61309ce0796500b90283cdf58dc"
+		"codename" => "aamessage"
 	);
 }
 
