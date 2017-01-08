@@ -1,8 +1,8 @@
 <?php
 /**
- * Awaiting Activation Message 1.8.0
+ * Awaiting Activation Message 1.8.1
 
- * Copyright 2016 Matthew Rogowski
+ * Copyright 2017 Matthew Rogowski
 
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -22,8 +22,15 @@ if(!defined("IN_MYBB"))
 	die("Direct initialization of this file is not allowed.<br /><br />Please make sure IN_MYBB is defined.");
 }
 
-$plugins->add_hook("global_start", "aamessage_global_intermediate");
 $plugins->add_hook("global_intermediate", "aamessage_global_intermediate");
+
+global $templatelist;
+
+if($templatelist)
+{
+	$templatelist .= ',';
+}
+$templatelist .= 'aamessage';
 
 function aamessage_info()
 {
@@ -33,8 +40,8 @@ function aamessage_info()
 		"website" => "https://github.com/MattRogowski/Awaiting-Activation-Message",
 		"author" => "Matt Rogowski",
 		"authorsite" => "https://matt.rogow.ski",
-		"version" => "1.8.0",
-		"compatibility" => "16*,18*",
+		"version" => "1.8.1",
+		"compatibility" => "18*",
 		"codename" => "aamessage"
 	);
 }
@@ -42,11 +49,11 @@ function aamessage_info()
 function aamessage_activate()
 {
 	global $db;
-	
+
 	require_once MYBB_ROOT . "inc/adminfunctions_templates.php";
-	
+
 	aamessage_deactivate();
-	
+
 	$templates = array();
 	$templates[] = array(
 		"title" => "aamessage",
@@ -75,31 +82,31 @@ function aamessage_activate()
 		);
 		$db->insert_query("templates", $insert);
 	}
-	
+
 	find_replace_templatesets("header", "#".preg_quote('{$unreadreports}')."#i", '{$unreadreports}{$aamessage}');
 }
 
 function aamessage_deactivate()
 {
 	global $db;
-	
+
 	require_once MYBB_ROOT . "inc/adminfunctions_templates.php";
-	
+
 	$templates = array(
 		"aamessage"
 	);
 	$templates = "'" . implode("','", $templates) . "'";
 	$db->delete_query("templates", "title IN ({$templates})");
-	
+
 	find_replace_templatesets("header", "#".preg_quote('{$aamessage}')."#i", '', 0);
 }
 
 function aamessage_global_intermediate()
 {
 	global $mybb, $lang, $templates, $theme, $aamessage;
-	
+
 	$lang->load("aamessage");
-	
+
 	if($mybb->user['usergroup'] == 5)
 	{
 		switch($mybb->settings['regtype'])
